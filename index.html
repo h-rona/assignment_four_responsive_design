@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A reader's guide to the noble ranks and forms of address in historical romantic isekai manhwa.">
+    <meta name="keywords" content="manhwa, isekai, historical romance, noble ranks, duke, forms of address">
+    <meta name="author" content="Hirona">
+    <title>A Reader's Guide: Ranks, Customs, and History</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Google Fonts: Pinyon Script (headings) and Cormorant Garamond (body text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- HEADER: logo on the left links back to the home page, navigation
+         on the right shows every page (Flexbox) -->
+    <header class="site-header" id="top">
+        <a class="logo" href="index.html">
+            <img src="images/crown.png" alt="" width="44" height="34">
+            <span>A Reader's Guide</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html" class="current" aria-current="page">Home</a></li>
+                <li><a href="season.html">The Season</a></li>
+                <li><a href="fact_fiction.html">Fact &amp; Fiction</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO: open storybook background with layered illustrations,
+             title and subtitle centered on top (Flexbox) -->
+        <section class="hero" aria-labelledby="site-title">
+            <img class="hero-art petals-left" src="images/petals_1.png" alt="" width="852" height="614">
+            <img class="hero-art scribble" src="images/gold_scribble.png" alt="" width="400" height="230">
+            <img class="hero-art couple" src="images/storybook_couple.png" alt="Manhwa illustration of a noble couple, the man kissing the lady's hand" width="900" height="846">
+            <img class="hero-art lines" src="images/storybook_lines.png" alt="" width="868" height="924">
+            <img class="hero-art petals-right" src="images/petals_2.png" alt="" width="642" height="682">
+            <h1 id="site-title">The world of Historical Romantic Isekai Manhwas</h1>
+            <p class="hero-subtitle">Ranks, Customs, and History</p>
+        </section>
+
+        <!-- NOBLE RANKS: crown image, heading, and a centered column of rank cards (Flexbox) -->
+        <section class="ranks" aria-labelledby="ranks-title">
+            <div class="ranks-heading">
+                <img src="images/crown.png" alt="Gold crown" width="242" height="188">
+                <h2 id="ranks-title">Noble Ranks</h2>
+            </div>
+            <p class="section-intro">Most manhwa borrow their ranks from European nobility. Here they are from highest to lowest, so you always know who outranks whom at the ball.</p>
+            <ul class="rank-list">
+                <li class="rank-card">
+                    <h3>Duke</h3>
+                    <p class="rank-wife">Wife: Duchess</p>
+                    <p>The highest noble rank below the royal family. Dukes often had royal blood and ruled huge territories. In manhwa, the duke is usually the cold, powerful male lead everyone fears.</p>
+                </li>
+                <li class="rank-card">
+                    <h3>Marquess</h3>
+                    <p class="rank-wife">Wife: Marchioness</p>
+                    <p>The name comes from the &ldquo;marches,&rdquo; the border lands a marquess guarded for the crown. Some translations spell it Marquis.</p>
+                </li>
+                <li class="rank-card">
+                    <h3>Count</h3>
+                    <p class="rank-wife">Wife: Countess</p>
+                    <p>A count governed a county. In Britain the same rank is called an earl, but his wife is still a countess.</p>
+                </li>
+                <li class="rank-card">
+                    <h3>Viscount</h3>
+                    <p class="rank-wife">Wife: Viscountess</p>
+                    <p>The word means &ldquo;vice-count,&rdquo; the count's deputy. Viscount families are often side characters or rivals in manhwa.</p>
+                </li>
+                <li class="rank-card">
+                    <h3>Baron</h3>
+                    <p class="rank-wife">Wife: Baroness</p>
+                    <p>The lowest rank of the nobility. In manhwa, a baron's family is often poor or newly titled, which makes it a common starting point for a heroine.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FORMS OF ADDRESS: heading with envelope image, then the table (rows use CSS Grid) -->
+        <section class="address" aria-labelledby="address-title">
+            <div class="address-heading">
+                <h2 id="address-title">Forms of Address</h2>
+                <img class="letters" src="images/letters.png" alt="Letters sealed with red wax" width="590" height="569">
+            </div>
+
+            <dl class="address-table">
+                <div class="address-row">
+                    <dt>Emperor / Empress</dt>
+                    <dd>Your Imperial Majesty</dd>
+                </div>
+                <div class="address-row">
+                    <dt>King / Queen</dt>
+                    <dd>Your Majesty</dd>
+                </div>
+                <div class="address-row">
+                    <dt>Prince / Princess</dt>
+                    <dd>Your Highness</dd>
+                </div>
+                <div class="address-row">
+                    <dt>Duke / Duchess</dt>
+                    <dd>Your Grace</dd>
+                </div>
+                <div class="address-row">
+                    <dt>Marquess to Baron</dt>
+                    <dd>My Lord / My Lady</dd>
+                </div>
+                <div class="address-row">
+                    <dt>Knight</dt>
+                    <dd>Sir, followed by his name</dd>
+                </div>
+                <div class="address-row">
+                    <dt>A noble's children</dt>
+                    <dd>Young Master / Young Lady</dd>
+                </div>
+            </dl>
+            <p class="address-note">&ldquo;Young Master&rdquo; and &ldquo;Young Lady&rdquo; come from Korean terms of respect and show up often in English translations.</p>
+
+            <!-- LINK CARDS to the other two pages (Flexbox) -->
+            <div class="link-cards">
+                <a class="link-card" href="season.html">
+                    <h3>The Season</h3>
+                    <p>Balls, Debuts, Courtship</p>
+                </a>
+                <a class="link-card" href="fact_fiction.html">
+                    <h3>Fact &amp; Fiction</h3>
+                    <p>What's real, what's invented</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (Flexbox) -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Hirona &middot; <a href="fact_fiction.html#sources">Sources</a> &middot; <a href="#top">Back to top</a></p>
+    </footer>
+
+</body>
+</html>

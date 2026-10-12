@@ -1,0 +1,1007 @@
+/* =====================================================================
+   ASSIGNMENT 4 - A Reader's Guide to the World of Historical Manhwa
+   Author: Hirona
+   =====================================================================
+
+   ---------------------------------------------------------------------
+   REQUIREMENT 2: COLOR AND GRAPHIC STRATEGY
+   ---------------------------------------------------------------------
+
+   1. How did you decide on your site's color scheme?
+    My site is about the royal courts, balls, and noble ranks found in historical romantic isekai manhwa, so I chose colors that fit that kind of world.
+    I was mainly inspired by the covers and artwork of romance fantasy manhwa, which often use soft pinks, roses, and gold details.
+    I was also inspired by the ornate pink-and-gold model site I done in Assignment 2.
+    The soft pinks give the site a romantic and delicate feel, while the gold makes it feel more royal, like a crown or ballroom decorations.
+    I added dark plum for contrast so the text is easier to read.
+    I also kept the same colors from my Assignment 2 wireframes so the coded site stays consistent with my original design.
+
+   2. Color palette (hexadecimal values):
+      - Plum .............. #450934
+      - Antique gold ...... #c9a227
+      - Blush pink ........ #fce2e1
+      - Pale pink ......... #fdf3f4
+      - White ............. #ffffff
+
+   3. Where will each color appear on the site?
+      - Plum (#450934): the main title, the section headings ("Noble
+        Ranks" and "Forms of Address"), the rank names, the table text,
+        the background of the two link cards (The Season and Fact &
+        Fiction), and the footer background.
+      - Antique gold (#c9a227): the thin line under the header, the
+        borders around the rank cards, the forms of address table, and
+        the link cards, the line above the footer, the small dots between
+        the navigation links, and the crown graphic.
+      - Blush pink (#fce2e1): the fallback color behind the Noble Ranks
+        and Forms of Address sections. It matches the pink of their
+        background images.
+      - Pale pink (#fdf3f4): the header background, and the fallback
+        color behind the hero banner while its image loads.
+      - White (#ffffff): the inside of the rank cards and table rows,
+        and the text on the plum link cards and footer.
+
+      Graphics (all in the images folder):
+      - bg_book.jpg: open storybook with roses, the hero background.
+      - storybook_couple.png: manhwa couple illustration on the book.
+      - petals_1.png and petals_2.png: pink petals drifting across the
+        top left and bottom right of the hero.
+      - storybook_lines.png and gold_scribble.png: blossom branch and
+        gold brush strokes decorating the book pages.
+      - bg_damask.jpg: pink damask pattern behind Noble Ranks.
+      - crown.png: gold crown beside the "Noble Ranks" heading.
+      - bg_roses.jpg: soft rose background behind Forms of Address.
+      - letters.png: wax-sealed letters beside "Forms of Address".
+      These images use the same pinks, golds, and whites as my palette,
+      so the graphics and colors work together.
+
+   ---------------------------------------------------------------------
+   REQUIREMENT 3: FONT STRATEGY
+   ---------------------------------------------------------------------
+
+   1. What fonts will you use for <body>, <p>, and <h1> - <h6>?
+      Both fonts come from Google Fonts (linked in the <head> of
+      each page).
+      - <body> (default): Cormorant Garamond, with Georgia and serif as
+        backups. It is an elegant old-style serif that fits the historical
+        setting and is readable in smaller text.
+      - <p>: Cormorant Garamond (the subtitle, the link card descriptions,
+        and the footer).
+      - <h1>, <h2>, <h3>: Pinyon Script, with cursive as a backup. It
+        looks like calligraphy on a royal invitation, so I use it for the
+        page title, the section headings, the rank names, and the link card
+        titles. Script fonts are hard to read in long sentences, so I only
+        use it for short headings.
+      I use only these 2 fonts and create hierarchy with size and weight.
+
+   2. Weights and sizes of the headings and paragraphs:
+      - h1: Pinyon Script, 5rem (80px), weight 400 (normal)
+      - h2: Pinyon Script, 3rem (48px), weight 400 (normal)
+      - h3: Pinyon Script, 2rem (32px), weight 400 (normal)
+        (Pinyon Script only comes in one weight, so headings get their
+        hierarchy from size.)
+      - p:  Cormorant Garamond, 1.25rem (20px), weight 500 (medium)
+      - navigation links: Cormorant Garamond, 1.25rem (20px), weight 500
+      - subtitle under the h1: Cormorant Garamond, 1.6rem (about 26px),
+        weight 500
+
+   3. Desired line-height, word-spacing, and letter-spacing:
+      - line-height: 1.6 for paragraph text, 1.3 for headings
+      - word-spacing: 0.05em for paragraph text, 0.1em for headings
+      - letter-spacing: 0.02em for paragraph and navigation text,
+        0.01em for script headings
+
+   ---------------------------------------------------------------------
+   LAYOUT STRATEGY (Requirement 1)
+   - CSS Flexbox: the header (logo on the left, navigation on the right),
+     the hero banner, the centered column of rank cards, the
+     "Forms of Address" heading row with the envelope image, the stacked
+     link cards, and the footer.
+   - CSS Grid: each row of the forms of address table (title on the left,
+     form of address on the right).
+   - Positioning (position: absolute) layers the decorative images on
+     top of the hero background, like layers in my Figma wireframe.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   ASSIGNMENT 4 NOTES
+   - Pseudo-classes: :hover on the navigation links, link cards, and
+     footer links; :focus-visible for keyboard users; :last-child to
+     remove the border under the last table row.
+   - Active white space: margin and padding keep space around every
+     section, inside every card, and on both sides of the page content.
+   - Media queries (screen): 900px and below for tablets, 600px and
+     below for phones.
+   - All images use max-width: 100% so they shrink with the screen.
+   --------------------------------------------------------------------- */
+
+
+/* Makes widths include padding and borders, so boxes are easier to size */
+* {
+    box-sizing: border-box;
+}
+
+/* Default font for the whole page: Cormorant Garamond renders in any
+   text that does not have its own font rule */
+body {
+    margin: 0;
+    background-color: #fdf3f4;
+    color: #450934;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+    word-spacing: 0.05em;
+    letter-spacing: 0.02em;
+}
+
+/* Responsive images: no image is ever wider than its container */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Paragraph font: Cormorant Garamond renders in all paragraph text */
+p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0 0 1em;
+}
+
+/* h1 font: Pinyon Script renders in the large title at the top of
+   each page */
+h1 {
+    font-family: "Pinyon Script", cursive;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.3;
+    word-spacing: 0.1em;
+    letter-spacing: 0.01em;
+    color: #450934;
+    margin: 0 0 0.3em;
+}
+
+/* h2 font: Pinyon Script renders in the section headings */
+h2 {
+    font-family: "Pinyon Script", cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3;
+    word-spacing: 0.1em;
+    letter-spacing: 0.01em;
+    color: #450934;
+    margin: 0 0 0.3em;
+}
+
+/* h3 font: Pinyon Script renders in the rank names, the link card
+   titles, and the smaller headings inside each article */
+h3 {
+    font-family: "Pinyon Script", cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    word-spacing: 0.1em;
+    letter-spacing: 0.01em;
+    margin: 0 0 0.2em;
+}
+
+a {
+    color: inherit;
+}
+
+/* Visible outline when someone moves through links with the keyboard */
+a:focus-visible {
+    outline: 3px solid #c9a227;
+    outline-offset: 3px;
+}
+
+
+/* ---------- Header (FLEXBOX) ---------- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background-color: #fdf3f4;
+    border-bottom: 3px solid #c9a227;
+    padding: 6px 60px;
+}
+
+/* Logo: crown image plus the site name, links back to the home page */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #450934;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 44px;
+}
+
+/* Logo font: Pinyon Script renders in "A Reader's Guide" at the top
+   left of the header */
+.logo span {
+    font-family: "Pinyon Script", cursive;
+    font-size: 2.25rem;
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Gold dot between navigation links */
+.main-nav li + li::before {
+    content: "\00B7";
+    color: #c9a227;
+    padding: 0 10px;
+}
+
+/* Navigation font: Cormorant Garamond medium renders in the three
+   header links (Home, The Season, Fact & Fiction) */
+.main-nav a {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #450934;
+    text-decoration: none;
+    padding-bottom: 2px;
+}
+
+/* Pseudo-class: underline a link when the mouse is over it */
+.main-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: #c9a227;
+}
+
+/* "Where am I?": the link for the page you are on is bold with a
+   gold line under it */
+.main-nav a.current {
+    font-weight: 600;
+    border-bottom: 2px solid #c9a227;
+}
+
+
+/* ---------- Hero banner on the home page (FLEXBOX) ---------- */
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 780px;
+    padding: 150px 20px 40px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fdf3f4;
+    background-image: url("../images/bg_book.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Title and subtitle sit on top of the layered images */
+.hero h1,
+.hero-subtitle {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 12px #ffffff, 0 0 4px #ffffff;
+}
+
+.hero h1 {
+    max-width: 9em;
+}
+
+/* Decorative images layered over the book, placed like the wireframe */
+.hero-art {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.couple {
+    left: 24%;
+    top: 34%;
+    width: 44%;
+}
+
+.lines {
+    left: 67%;
+    top: 16%;
+    width: 21%;
+}
+
+.scribble {
+    left: 14%;
+    top: 34%;
+    width: 17%;
+}
+
+.petals-left {
+    left: 0;
+    top: 0;
+    width: 32%;
+}
+
+.petals-right {
+    right: 0;
+    bottom: -4%;
+    width: 26%;
+}
+
+/* Subtitle font: Cormorant Garamond renders in "Ranks, Customs, and
+   History" under the page title */
+.hero-subtitle {
+    margin: auto 0 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+
+/* ---------- Section intro text (used on every page) ---------- */
+.section-intro {
+    max-width: 640px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+
+/* ---------- Noble Ranks section (FLEXBOX column) ---------- */
+.ranks {
+    background-color: #fce2e1;
+    background-image: url("../images/bg_damask.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px 70px;
+}
+
+.ranks-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.ranks-heading h2 {
+    margin: 0;
+}
+
+.ranks-heading img {
+    width: 120px;
+}
+
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each card is a little narrower than the one above it, so the column
+   gets thinner from Duke down to Baron like a ladder of rank */
+.rank-card {
+    width: 100%;
+    padding: 22px 32px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 3px solid #c9a227;
+    box-shadow: 4px 5px 8px rgba(69, 9, 52, 0.2);
+}
+
+.rank-card:nth-child(1) { max-width: 720px; }
+.rank-card:nth-child(2) { max-width: 680px; }
+.rank-card:nth-child(3) { max-width: 640px; }
+.rank-card:nth-child(4) { max-width: 600px; }
+.rank-card:nth-child(5) { max-width: 560px; }
+
+.rank-card h3 {
+    color: #450934;
+}
+
+/* The wife's title, under the rank name */
+.rank-card .rank-wife {
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.rank-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ---------- Forms of Address section ---------- */
+.address {
+    background-color: #fce2e1;
+    background-image: url("../images/bg_roses.jpg");
+    background-size: cover;
+    background-position: center;
+    border-top: 2px solid #ffffff;
+    padding: 40px 20px 70px;
+}
+
+/* Heading row: heading in the center, envelope image on the right
+   (FLEXBOX) */
+.address-heading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.address-heading h2 {
+    max-width: 5em;
+    margin: 0;
+}
+
+.letters {
+    position: absolute;
+    right: 5%;
+    top: -60px;
+    width: 230px;
+}
+
+.address-table {
+    max-width: 760px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 3px solid #c9a227;
+    box-shadow: 4px 5px 8px rgba(69, 9, 52, 0.2);
+}
+
+/* Each table row is a 2-column grid: title left, address right
+   (CSS GRID) */
+.address-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 30px;
+    border-bottom: 3px solid #c9a227;
+}
+
+/* Pseudo-class: no border under the last row */
+.address-row:last-child {
+    border-bottom: none;
+}
+
+/* Table font: Pinyon Script renders in the left column (the titles)
+   of the forms of address table */
+.address-row dt {
+    font-family: "Pinyon Script", cursive;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Table font: Cormorant Garamond renders in the right column (what
+   to call them), so the full phrases are easy to read */
+.address-row dd {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: right;
+    margin: 0;
+}
+
+.address-note {
+    max-width: 760px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* ---------- Link cards to the other pages (FLEXBOX column) ---------- */
+.link-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 60px;
+}
+
+.link-card {
+    display: block;
+    width: 100%;
+    max-width: 740px;
+    padding: 24px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #450934;
+    border: 3px solid #c9a227;
+    box-shadow: 4px 5px 8px rgba(69, 9, 52, 0.3);
+}
+
+.link-card p {
+    margin: 0;
+}
+
+/* Pseudo-class: the card border turns white when the mouse is over it */
+.link-card:hover {
+    border-color: #ffffff;
+}
+
+
+/* ---------- Page banner on The Season and Fact & Fiction ---------- */
+.page-banner {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 20px 50px;
+    text-align: center;
+    background-color: #fce2e1;
+    background-image: url("../images/bg_damask.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid #c9a227;
+}
+
+.page-banner h1,
+.page-banner p {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 12px #ffffff, 0 0 4px #ffffff;
+}
+
+.page-banner h1 {
+    font-size: 4.5rem;
+    margin-bottom: 0.1em;
+}
+
+.page-banner .banner-subtitle {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.banner-art {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner-art.petals-left {
+    left: 0;
+    top: -20%;
+    width: 22%;
+}
+
+.banner-art.petals-right {
+    right: 0;
+    bottom: -30%;
+    width: 18%;
+}
+
+/* "Where am I?": breadcrumb trail under the banner */
+.breadcrumb {
+    background-color: #fdf3f4;
+    border-bottom: 1px solid #c9a227;
+    padding: 10px 60px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.breadcrumb li + li::before {
+    content: "\203A";
+    color: #c9a227;
+    padding: 0 10px;
+}
+
+.breadcrumb a:hover {
+    text-decoration-color: #c9a227;
+}
+
+
+/* ---------- Content layout: sidebar + article (CSS GRID) ---------- */
+.content {
+    background-color: #fce2e1;
+    background-image: url("../images/bg_roses.jpg");
+    background-size: cover;
+    background-position: center top;
+    padding: 60px 40px 80px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    max-width: 1140px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* "Where can I go?": list of the sections on this page */
+.toc {
+    position: sticky;
+    top: 20px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 3px solid #c9a227;
+    box-shadow: 4px 5px 8px rgba(69, 9, 52, 0.2);
+}
+
+.toc h2 {
+    font-size: 2rem;
+    margin-bottom: 0.4em;
+}
+
+.toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc li {
+    padding: 6px 0;
+    border-bottom: 1px solid #fce2e1;
+}
+
+.toc li:last-child {
+    border-bottom: none;
+}
+
+.toc a {
+    text-decoration: none;
+    font-size: 1.15rem;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+    text-decoration-color: #c9a227;
+}
+
+/* Each topic is a white panel with a gold border */
+.topic {
+    padding: 36px 48px;
+    margin-bottom: 36px;
+    background-color: #ffffff;
+    border: 3px solid #c9a227;
+    box-shadow: 4px 5px 8px rgba(69, 9, 52, 0.2);
+    scroll-margin-top: 20px;
+}
+
+.topic p,
+.topic ul {
+    max-width: 66ch;
+}
+
+.topic ul {
+    padding-left: 1.2em;
+    margin: 0 0 1em;
+}
+
+.topic li {
+    margin-bottom: 0.4em;
+}
+
+/* Decorative image floated inside a topic panel */
+.topic-art {
+    float: right;
+    width: 180px;
+    margin: 0 0 16px 24px;
+}
+
+/* Clears the float so the panel wraps around the image */
+.topic::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* Highlighted box for a quick tip inside a topic */
+.reader-tip {
+    margin: 20px 0 0;
+    padding: 16px 22px;
+    background-color: #fdf3f4;
+    border-left: 4px solid #c9a227;
+}
+
+.reader-tip p {
+    margin: 0;
+}
+
+
+/* ---------- Fact & Fiction comparison cards (CSS GRID) ---------- */
+.compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.compare div {
+    padding: 18px 22px;
+    background-color: #fdf3f4;
+    border-top: 3px solid #c9a227;
+}
+
+.compare h3 {
+    font-size: 1.75rem;
+    color: #450934;
+}
+
+.compare p:last-child {
+    margin-bottom: 0;
+}
+
+/* The verdict tag beside each trope heading */
+.verdict {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 2px 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid #c9a227;
+    border-radius: 20px;
+}
+
+.verdict.fact {
+    background-color: #450934;
+    color: #ffffff;
+}
+
+.verdict.fiction {
+    background-color: #ffffff;
+    color: #450934;
+}
+
+.verdict.both {
+    background-color: #fce2e1;
+    color: #450934;
+}
+
+.sources-list li {
+    margin-bottom: 0.6em;
+}
+
+/* "How do I get back?": link back to the home page at the end of
+   each content page */
+.back-home {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.back-home a {
+    display: inline-block;
+    padding: 12px 32px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #450934;
+    border: 3px solid #c9a227;
+}
+
+.back-home a:hover {
+    border-color: #ffffff;
+}
+
+
+/* ---------- Footer (FLEXBOX) ---------- */
+.site-footer {
+    display: flex;
+    justify-content: center;
+    background-color: #450934;
+    color: #ffffff;
+    border-top: 3px solid #c9a227;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.site-footer p {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.site-footer a {
+    text-decoration: none;
+}
+
+/* Pseudo-class: footer links underline when the mouse is over them */
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================================
+   MEDIA QUERY 1: tablets and small laptops (900px wide and below)
+   ===================================================================== */
+@media screen and (max-width: 900px) {
+
+    .site-header,
+    .breadcrumb {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .hero {
+        min-height: 640px;
+        padding-top: 110px;
+    }
+
+    .couple {
+        left: 18%;
+        top: 40%;
+        width: 60%;
+    }
+
+    .page-banner h1 {
+        font-size: 3.6rem;
+    }
+
+    .content {
+        padding: 40px 24px 60px;
+    }
+
+    /* The sidebar moves above the article */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .toc {
+        position: static;
+    }
+
+    .letters {
+        width: 170px;
+        top: -30px;
+    }
+}
+
+
+/* =====================================================================
+   MEDIA QUERY 2: phones (600px wide and below)
+   ===================================================================== */
+@media screen and (max-width: 600px) {
+
+    /* Header stacks: logo on top, navigation underneath */
+    .site-header {
+        flex-direction: column;
+        padding: 10px 16px;
+        gap: 4px;
+    }
+
+    .main-nav ul {
+        justify-content: center;
+    }
+
+    .main-nav a {
+        font-size: 1.1rem;
+    }
+
+    .main-nav li + li::before {
+        padding: 0 6px;
+    }
+
+    .breadcrumb {
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    .hero {
+        min-height: 520px;
+        padding-top: 70px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .couple {
+        left: 10%;
+        top: 44%;
+        width: 80%;
+    }
+
+    .lines,
+    .scribble {
+        display: none;
+    }
+
+    .page-banner {
+        padding: 50px 16px 36px;
+    }
+
+    .page-banner h1 {
+        font-size: 2.8rem;
+    }
+
+    .page-banner .banner-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .ranks,
+    .address {
+        padding: 32px 16px 50px;
+    }
+
+    .ranks-heading img {
+        width: 80px;
+    }
+
+    .rank-card {
+        padding: 18px 20px;
+    }
+
+    .letters {
+        position: static;
+        width: 110px;
+    }
+
+    .address-heading {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    /* Table rows stack: title on top, form of address underneath */
+    .address-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 10px 18px;
+        text-align: center;
+    }
+
+    .address-row dd {
+        text-align: center;
+    }
+
+    .link-cards {
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .content {
+        padding: 28px 12px 48px;
+    }
+
+    .topic {
+        padding: 24px 20px;
+    }
+
+    .topic-art {
+        float: none;
+        display: block;
+        width: 140px;
+        margin: 0 auto 16px;
+    }
+
+    /* Fact & Fiction cards stack on top of each other */
+    .compare {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .site-footer p {
+        font-size: 1.25rem;
+    }
+}
